@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Template.Models
+namespace VendorTracker.Models
 {
-  public class ClassName
+  public class Vendors
   {
   }
 }

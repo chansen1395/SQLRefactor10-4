@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Template;
+using VendorTracker;
 
-namespace ProjectName.Tests
+namespace VendorTracker.Tests
 {
   [TestClass]
-  public class ClassNameTests
+  public class VendorsTests
   {
     // Test methods go here
   }

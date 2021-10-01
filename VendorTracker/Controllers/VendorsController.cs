@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
-using Template.Models;
+using VendorTracker.Models;
 
-namespace Template.Controllers
+namespace VendorTracker.Controllers
 {
-  public class ClassNameController : Controller
+  public class VendorsController : Controller
   {
-    [HttpGet("/class-controller")]
+    [HttpGet("/vendors")]
     public ActionResult Index()
     {
       return View();
     }
 
-    [HttpPost("/class-controller")]
+    [HttpPost("/vendors")]
     public ActionResult IndexView()
     {
       return RedirectToAction("Index");
