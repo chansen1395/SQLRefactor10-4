@@ -11,7 +11,7 @@ namespace VendorTracker.Tests
   
     public void Dispose()
     {
-      Vendor.ClearAll();
+      Order.ClearAll();
     }
 //  Order(string title, string description, int price, string date)
     [TestMethod]
@@ -60,6 +60,36 @@ namespace VendorTracker.Tests
       Assert.AreEqual(newOrder.OrderDate, newOrderDate);
     }
 
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_OrderList()
+    {
+      List<Order> newList = new List<Order> { };
+
+      List<Order> result = Order.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllOrderObjects_OrderList()
+    {
+      string title01 = "Bread Order";
+      string description01 = "8 Bread";
+      int price01 = 22;
+      string orderDate01 = "07-15-2012";
+      string title02 = "Pastry Order";
+      string description02 = "8 Pastry";
+      int price02 = 22;
+      string orderDate02 = "08-01-2010";
+
+      Order order01 = new Order(title01, description01, price01, orderDate01);
+      Order order02 = new Order(title02, description02, price02, orderDate02);
+      List<Order> newList = new List<Order> { order01, order02 };
+
+      List<Order> result = Order.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
+    }
     // [TestMethod]
     // public void GetId_ReturnsVendorsId_Int()
     // {
