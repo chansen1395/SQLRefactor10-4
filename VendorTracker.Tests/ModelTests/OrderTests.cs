@@ -104,36 +104,25 @@ namespace VendorTracker.Tests
       Assert.AreEqual(1, result);
     }
 
-    // [TestMethod]
-    // public void GetAll_ReturnsAllVendorObjects_VendorList()
-    // {
-    //   string vendorName01 = "Steve's Pizzaria";
-    //   string vendorDescription01 = "Test Description1";
-    //   string vendorName02 = "Dan's Dough";
-    //   string vendorDescription02 = "Test Description2";
-    //   Vendor newVendor1 = new Vendor(vendorName01, vendorDescription01);
-    //   Vendor newVendor2 = new Vendor(vendorName02, vendorDescription02);
-    //   List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      string title01 = "Bread Order";
+      string description01 = "8 Bread";
+      int price01 = 22;
+      string orderDate01 = "07-15-2012";
+      string title02 = "Pastry Order";
+      string description02 = "8 Pastry";
+      int price02 = 22;
+      string orderDate02 = "08-01-2010";
 
-    //   List<Vendor> result = Vendor.GetAll();
+      Order order01 = new Order(title01, description01, price01, orderDate01);
+      Order order02 = new Order(title02, description02, price02, orderDate02);
 
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
+      Order result = Order.Find(2);
 
-    // [TestMethod]
-    // public void Find_ReturnsCorrectVendor_Vendor()
-    // {
-    //   string vendorName01 = "Stan's Spaghetteria";
-    //   string vendorDescription01 = "Test Description1";
-    //   string vendorName02 = "Allen's Artisinal Breads";
-    //   string vendorDescription02 = "Test Description2";
-    //   Vendor newVendor1 = new Vendor(vendorName01, vendorDescription01);
-    //   Vendor newVendor2 = new Vendor(vendorName02, vendorDescription02);
-
-    //   Vendor result = Vendor.Find(2);
-
-    //   Assert.AreEqual(newVendor2, result);
-    // }
+      Assert.AreEqual(order02, result);
+    }
 
     // [TestMethod]
     // public void AddOrder_AssociatesOrderWithVendor_OrderList()
