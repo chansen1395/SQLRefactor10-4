@@ -3,7 +3,7 @@
 }
 
 <h1>Vendor Tracker Order Details: </h1>
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 25rem;">
   <div class="card-body">
     <h3 class="card-title">Vendor: @Model["vendor"].VendorName</h3>
     <h4 class="card-title">Title: @Model["order"].Title</h4>
@@ -11,6 +11,20 @@
       <h4>Order Description: @Model["order"].Description</h4>
       <h4>Invoiced Price: $@Model["order"].Price</h4>
       <h4>Date of Order: @Model["order"].OrderDate</h4>
+
+      @if (@Model["orders"].Paid)
+      {
+        <form action="/orders/@Model.Id/edit" method="get">
+          <button type="submit">Mark Unpaid</button>
+        </form>
+      }
+
+      @if (!@Model["orders"].Paid)
+        {
+          <form action="/orders/@Model.Id/edit" method="get">
+            <button type="submit">Mark Paid</button>
+          </form>
+        }
     </div>
   </div>
 </div>

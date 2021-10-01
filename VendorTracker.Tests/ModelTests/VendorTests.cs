@@ -98,7 +98,8 @@ namespace VendorTracker.Tests
       string description = "8 Pastries";
       int price = 17;
       string date = "06-01-2015";
-      Order newOrder = new Order(title, description, price, date);
+      bool paid = false;
+      Order newOrder = new Order(title, description, price, date, paid);
       List<Order> newList = new List<Order> { newOrder };
       string vendorName = "Bob";
       string vendorDescription = "456 Main St.";

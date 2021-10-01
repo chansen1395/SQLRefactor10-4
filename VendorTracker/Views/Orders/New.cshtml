@@ -1,11 +1,7 @@
 @{
   Layout = "_Layout";
 }
-@if (@Model.Count == 0)
-{
-  <h3>No orders have been added yet!</h3>
-} 
-<hr>
+
 <h1>Add a new order to @Model.VendorName</h1>
 
 <form action="/vendors/@Model.Id/orders" method="post">
@@ -22,5 +18,10 @@
   <label for="date">Date of Order</label>
   <input id="date" name="date" type="date">
   <br>
+  <label for="paid">Paid?</label>
+  <select id="paid" name="paid">
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
   <button type='submit'>Add Order</button>
 </form>

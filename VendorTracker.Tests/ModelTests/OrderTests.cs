@@ -17,7 +17,7 @@ namespace VendorTracker.Tests
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("test title", "test description", 1, "test date");
+      Order newOrder = new Order("test title", "test description", 1, "test date", false);
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
 
@@ -28,7 +28,7 @@ namespace VendorTracker.Tests
       string description = "8 Bread";
       int price = 22;
       string orderDate = "07-15-2012";
-      Order newOrder = new Order(title, description, price, orderDate);
+      Order newOrder = new Order(title, description, price, orderDate, false);
 
       Assert.AreEqual(newOrder.Title, title);
       Assert.AreEqual(newOrder.Description, description);
@@ -43,21 +43,25 @@ namespace VendorTracker.Tests
       string description = "8 Bread";
       int price = 22;
       string orderDate = "07-15-2012";
-      Order newOrder = new Order(title, description, price, orderDate);
+      bool paid = false;
+      Order newOrder = new Order(title, description, price, orderDate, paid);
 
       string newTitle = "Pastry Order";
       string newDescription = "8 Pastry";
       int newPrice = 22;
       string newOrderDate = "08-01-2010";
+      bool newPaid = true;
       newOrder.Title = newTitle;
       newOrder.Description = newDescription;
       newOrder.Price = newPrice;
       newOrder.OrderDate = newOrderDate;
+      newOrder.Paid = newPaid;
 
       Assert.AreEqual(newOrder.Title, newTitle);
       Assert.AreEqual(newOrder.Description, newDescription);
       Assert.AreEqual(newOrder.Price, newPrice);
       Assert.AreEqual(newOrder.OrderDate, newOrderDate);
+      Assert.AreEqual(newOrder.Paid, newPaid);
     }
 
     [TestMethod]
@@ -77,13 +81,16 @@ namespace VendorTracker.Tests
       string description01 = "8 Bread";
       int price01 = 22;
       string orderDate01 = "07-15-2012";
+      bool paid01 = true;
+
       string title02 = "Pastry Order";
       string description02 = "8 Pastry";
       int price02 = 22;
       string orderDate02 = "08-01-2010";
+      bool paid02 = false;
 
-      Order order01 = new Order(title01, description01, price01, orderDate01);
-      Order order02 = new Order(title02, description02, price02, orderDate02);
+      Order order01 = new Order(title01, description01, price01, orderDate01, paid01);
+      Order order02 = new Order(title02, description02, price02, orderDate02, paid02);
       List<Order> newList = new List<Order> { order01, order02 };
 
       List<Order> result = Order.GetAll();
@@ -98,7 +105,8 @@ namespace VendorTracker.Tests
       string description01 = "8 Bread";
       int price01 = 22;
       string orderDate01 = "07-15-2012";
-      Order newOrder = new Order(title01, description01, price01, orderDate01);
+      bool paid01 = false;
+      Order newOrder = new Order(title01, description01, price01, orderDate01, paid01);
       int result = newOrder.Id;
 
       Assert.AreEqual(1, result);
@@ -111,13 +119,16 @@ namespace VendorTracker.Tests
       string description01 = "8 Bread";
       int price01 = 22;
       string orderDate01 = "07-15-2012";
+      bool paid01 = true;
+
       string title02 = "Pastry Order";
       string description02 = "8 Pastry";
       int price02 = 22;
       string orderDate02 = "08-01-2010";
+      bool paid02 = false;
 
-      Order order01 = new Order(title01, description01, price01, orderDate01);
-      Order order02 = new Order(title02, description02, price02, orderDate02);
+      Order order01 = new Order(title01, description01, price01, orderDate01, paid01);
+      Order order02 = new Order(title02, description02, price02, orderDate02, paid02);
 
       Order result = Order.Find(2);
 
