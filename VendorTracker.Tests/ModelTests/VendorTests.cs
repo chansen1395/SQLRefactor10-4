@@ -68,5 +68,21 @@ namespace VendorTracker.Tests
 
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      //Arrange
+      string vendorName01 = "Stan's Spaghetteria";
+      string vendorName02 = "Allen's Artisinal Breads";
+      Vendor newVendor1 = new Vendor(vendorName01);
+      Vendor newVendor2 = new Vendor(vendorName02);
+
+      //Act
+      Vendor result = Vendor.Find(2);
+
+      //Assert
+      Assert.AreEqual(newVendor2, result);
+    }
   }
 }
