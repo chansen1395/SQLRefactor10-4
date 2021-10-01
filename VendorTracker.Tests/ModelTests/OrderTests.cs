@@ -123,24 +123,5 @@ namespace VendorTracker.Tests
 
       Assert.AreEqual(order02, result);
     }
-
-    // [TestMethod]
-    // public void AddOrder_AssociatesOrderWithVendor_OrderList()
-    // {
-    //   string title = "Pastry Order";
-    //   string description = "8 Pastries";
-    //   int price = 17;
-    //   string date = "06-01-2015";
-    //   Order newOrder = new Order(title, description, price, date);
-    //   List<Order> newList = new List<Order> { newOrder };
-    //   string vendorName = "Bob";
-    //   string vendorDescription = "456 Main St.";
-    //   Vendor newVendor = new Vendor(vendorName, vendorDescription);
-    //   newVendor.AddOrder(newOrder);
-
-    //   List<Order> result = newVendor.Orders;
-
-    //   CollectionAssert.AreEqual(newList, result);
-    // }
   }
 }
