@@ -37,7 +37,8 @@ _This application will run a web application. The user may navigate the site to 
 
 ## Known Bugs
 
-* _No known bugs_
+* _Inputs not sanitized._
+* _When marking paid/unpaid, it only switches the first order's paid variable._
 
 ## License
 

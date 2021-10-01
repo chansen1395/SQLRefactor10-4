@@ -41,15 +41,15 @@ namespace VendorTracker.Models
 
     public static Order UpdatePaid(int paidId)
     {
-      if (_instances[paidId - 1].Paid)
+      if (_instances[paidId].Paid)
       {
-        _instances[paidId -1 ].Paid = false;
-        return _instances[paidId - 1];
+        _instances[paidId].Paid = false;
+        return _instances[paidId];
       }
       else
       {
-        _instances[paidId - 1].Paid = true;
-        return _instances[paidId - 1];
+        _instances[paidId].Paid = true;
+        return _instances[paidId];
       }
     }
 

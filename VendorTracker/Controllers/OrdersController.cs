@@ -31,6 +31,15 @@ namespace VendorTracker.Controllers
       return View(model);
     }
 
+    // WIP Currently only switches paid for first order if multiple orders are made
+    [HttpPost("/vendors/{vendorId}/orders/{orderId}/edit")]
+    public ActionResult Update(int orderId)
+    {
+      Order paidOrder = Order.UpdatePaid(orderId);
+      Response.Redirect("/vendors");
+      return View();
+    }
+
     // *** WIP ***
     // [HttpPost("/vendors/{vendorId}/orders/{orderId}/delete")]
     // public ActionResult DeleteOrder(int orderId)

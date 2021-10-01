@@ -9,7 +9,15 @@
 <ol>
 @foreach (Order order in @Model["orders"])
 {
-  <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a></li>
+  @if (@order.Paid)
+  {
+    <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a> - *PAID*</li>
+  }
+  @if (!order.Paid)
+  {
+    <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a> - *NOT PAID*</li>
+  }
+  @* <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a></li> *@
 }
 </ol>
 <hr>
@@ -27,3 +35,26 @@
 <form action='/orders/delete' method="post">
   <button type="submit">Remove ALL Orders</button>
 </form>
+
+@* <h1>Order has been Paid</h1>
+<ul>
+  @foreach (Order order in Model["orders"])
+  {
+    @if (@Model["order"].Paid)
+    {
+      <li><a href='/orders/@order.Id'>@Model["order"].Title</a></li>
+    }
+  }
+</ul>
+
+<h1>Not yet Paid</h1>
+<ul>
+  @foreach (Order order in Model)
+  {
+    @if (!Model["order"].Paid)
+    {
+      <li><a href='/orders/@order.Id'>@Model["order"].Title</a></li>
+    }
+  }
+</ul> *@
+
