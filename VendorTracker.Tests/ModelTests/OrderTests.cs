@@ -21,30 +21,44 @@ namespace VendorTracker.Tests
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
 
-    // [TestMethod]
-    // public void GetVendor_ReturnsVendor_String()
-    // {
-    //   string vendorName = "Bobby's Pie Shop";
-    //   string vendorDescription = "123 Main St.";
-    //   Vendor newVendor = new Vendor(vendorName, vendorDescription);
+    [TestMethod]
+    public void GetOrder_GetOrder_String()
+    {
+      string title = "Bread Order";
+      string description = "8 Bread";
+      int price = 22;
+      string orderDate = "07-15-2012";
+      Order newOrder = new Order(title, description, price, orderDate);
 
-    //   string result = newVendor.VendorName;
+      Assert.AreEqual(newOrder.Title, title);
+      Assert.AreEqual(newOrder.Description, description);
+      Assert.AreEqual(newOrder.Price, price);
+      Assert.AreEqual(newOrder.OrderDate, orderDate);
+    }
 
-    //   Assert.AreEqual(vendorName, result);
-    // }
+    [TestMethod]
+    public void SetOrder_SetOrder_String()
+    {
+      string title = "Bread Order";
+      string description = "8 Bread";
+      int price = 22;
+      string orderDate = "07-15-2012";
+      Order newOrder = new Order(title, description, price, orderDate);
 
-    // [TestMethod]
-    // public void SetVendor_ReturnsVendor_String()
-    // {
-    //   string vendorName = "Bobby's Pie Shop";
-    //   string newVendorName = "Joe's Cakery";
-    //   string vendorDescription = "123 Main St.";
-    //   Vendor newVendor = new Vendor(vendorName, vendorDescription);
+      string newTitle = "Pastry Order";
+      string newDescription = "8 Pastry";
+      int newPrice = 22;
+      string newOrderDate = "08-01-2010";
+      newOrder.Title = newTitle;
+      newOrder.Description = newDescription;
+      newOrder.Price = newPrice;
+      newOrder.OrderDate = newOrderDate;
 
-    //   newVendor.VendorName = newVendorName;
-
-    //   Assert.AreEqual(newVendor.VendorName, newVendorName);
-    // }
+      Assert.AreEqual(newOrder.Title, newTitle);
+      Assert.AreEqual(newOrder.Description, newDescription);
+      Assert.AreEqual(newOrder.Price, newPrice);
+      Assert.AreEqual(newOrder.OrderDate, newOrderDate);
+    }
 
     // [TestMethod]
     // public void GetId_ReturnsVendorsId_Int()
