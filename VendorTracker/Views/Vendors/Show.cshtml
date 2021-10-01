@@ -1,18 +1,29 @@
+@using VendorTracker.Models;
 @{
   Layout = "_Layout";
 }
 
-@using VendorTracker.Models;
 
 <h3>Here are all the orders for this vendor:</h3>
-
+<hr>
 <ol>
 @foreach (Order order in @Model["orders"])
 {
   <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Title</a></li>
 }
 </ol>
+<hr>
 
-<p><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></p>
-<p><a href='/vendors'>Return to vendor list</a></p>
-<p><a href='/'>Return to Main Page</a></p>
+<form action='/vendors/@Model["vendor"].Id/orders/new' method="get">
+  <button type="submit">Add a new order</button>
+</form>
+<form action="/vendors" method="get">
+  <button type="submit">Vendors Home</button>
+</form>
+<form action="/" method="get">
+  <button type="submit"> Home</button>
+</form>
+<hr>
+<form action='/orders/delete' method="post">
+  <button type="submit">Remove ALL Orders</button>
+</form>

@@ -6,52 +6,38 @@ namespace VendorTracker.Controllers
 {
   public class OrdersController : Controller
   {
-
-    [HttpGet("/vendors")]
-    public ActionResult Index()
+    [HttpGet("/vendors/{vendorId}/orders/new")]
+    public ActionResult New(int vendorId)
     {
-      List<Vendor> allVendors = Vendor.GetAll();
-      return View(allVendors);
+      Vendor vendor = Vendor.Find(vendorId);
+      return View(vendor);
     }
 
-    [HttpGet("/vendors/new")]
-    public ActionResult New()
+    [HttpPost("/orders/delete")]
+    public ActionResult DeleteAll()
     {
+      Order.ClearAll();
       return View();
     }
 
-    [HttpPost("/vendors")]
-    public ActionResult Create(string vendorName, string vendorDescription)
+    [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
+    public ActionResult Show(int vendorId, int orderId)
     {
-      Vendor newVendor = new Vendor(vendorName, vendorDescription);
-      return RedirectToAction("Index");
-    }
-
-    [HttpGet("/vendors/{id}")]
-    public ActionResult Show(int id)
-    {
+      Order order = Order.Find(orderId);
+      Vendor vendor = Vendor.Find(vendorId);
       Dictionary<string, object> model = new Dictionary<string, object>();
-      Vendor selectedVendor = Vendor.Find(id);
-      List<Order> vendorOrders = selectedVendor.Orders;
-      model.Add("vendor", selectedVendor);
-      model.Add("orders", vendorOrders);
+      model.Add("order", order);
+      model.Add("vendor", vendor);
       return View(model);
     }
 
-
-    // This one creates new Orders within a given Vendor, not new Vendors:
-
-    [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string title, string description, int price, string date)
-    {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Vendor foundVendor = Vendor.Find(vendorId);
-      Order newOrder = new Order(title, description, price, date);
-      foundVendor.AddOrder(newOrder);
-      List<Order> vendorOrders = foundVendor.Orders;
-      model.Add("orders", vendorOrders);
-      model.Add("vendor", foundVendor);
-      return View("Show", model);
-    }
+    // *** WIP ***
+    // [HttpPost("/vendors/{vendorId}/orders/{orderId}/delete")]
+    // public ActionResult DeleteOrder(int orderId)
+    // {
+    //   Order.CancelOrder(orderId);
+    //   return View();
+    // }
+    // *** END WIP ***
   }
 }

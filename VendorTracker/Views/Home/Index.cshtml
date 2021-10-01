@@ -2,5 +2,10 @@
   Layout = "_Layout";
 }
 <h1>Welcome, Pierre! Choose an option:</h1>
-<h3><a href='/vendors'>View vendors</a></h3>
-<h3><a href='/vendors/new'>Add a new vendor</a></h3>
+
+<form action='/vendors' method="get">
+  <button type="submit">View vendors</button>
+</form>
+<form action='/vendors/new' method="get">
+  <button type="submit">Add a new vendor</button>
+</form>

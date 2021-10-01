@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace VendorTracker.Models
@@ -35,5 +36,12 @@ namespace VendorTracker.Models
     {
       return _instances[searchId-1];
     }
+
+    // ** WIP **
+    // public void CancelOrder(int orderId)
+    // {
+    //   Order.RemoveAt(orderId);
+    // }
+    // ** END WIP **
   }
 }

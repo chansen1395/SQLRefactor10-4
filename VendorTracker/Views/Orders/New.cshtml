@@ -1,8 +1,12 @@
 @{
   Layout = "_Layout";
 }
-
-<h1>Add a new order to @Model.Name</h1>
+@if (@Model.Count == 0)
+{
+  <h3>No orders have been added yet!</h3>
+} 
+<hr>
+<h1>Add a new order to @Model.VendorName</h1>
 
 <form action="/vendors/@Model.Id/orders" method="post">
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">

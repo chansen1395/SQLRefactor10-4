@@ -10,10 +10,20 @@
 {
   <h3>No vendors have been added yet!</h3>
 } 
-
+@{
+  int counter = 1;
+}
 @foreach (Vendor vendor in Model)
 {
-  <h3><a href='/vendors/@vendor.Id'>@vendor.VendorName, @vendor.VendorDescription</a></h3>
+  <h3>@counter. Name: <a href='/vendors/@vendor.Id'>@vendor.VendorName</a></h3>
+  <h5>Description: @vendor.VendorDescription</h5>
+  <hr>
+  counter++; 
 }
 
-<p><a href='/'>Back home</a></p>
+<form action='/vendors/new' method="get">
+  <button type="submit">Add a new vendor</button>
+</form>
+<form action="/" method="get">
+  <button type="submit">Home</button>
+</form>

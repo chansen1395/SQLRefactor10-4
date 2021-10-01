@@ -3,12 +3,29 @@
 }
 
 <h1>Vendor Tracker Order Details: </h1>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title">Vendor: @Model["vendor"].VendorName</h3>
+    <h4 class="card-title">Title: @Model["order"].Title</h4>
+    <div class="card-text">
+      <h4>Order Description: @Model["order"].Description</h4>
+      <h4>Invoiced Price: $@Model["order"].Price</h4>
+      <h4>Date of Order: @Model["order"].OrderDate</h4>
+    </div>
+  </div>
+</div>
 
-<h3>Vendor: @Model["vendor"].VendorName</h3>
-<h2>@Model["order"].Title</h2>
-<h2>@Model["order"].Description</h2>
-<h2>@Model["order"].Price</h2>
-<h2>@Model["order"].OrderDate</h2>
 
-<a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
-<a href='/vendors'>View all vendors</a>
+<hr>
+<form action='/vendors/@Model["vendor"].Id/orders/new' method="get">
+  <button type="submit">Add another order</button>
+</form>
+<form action='/vendors' method="get">
+  <button type="submit">Vendors Home</button>
+</form>
+
+@* WIP *@
+@* <form action='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/delete' method="post">
+  <button type="submit">Cancel This Order</button>
+</form> *@
+@* END WIP *@
