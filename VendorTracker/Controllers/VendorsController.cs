@@ -40,7 +40,7 @@ namespace VendorTracker.Controllers
 
     // Creates new Orders within a given Vendor, not new Vendors:
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string title, string description, int price, string date, bool paid)
+    public ActionResult Create(int vendorId, string title, string description, int price, DateTime date, bool paid)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendor foundVendor = Vendor.Find(vendorId);
